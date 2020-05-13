@@ -23,10 +23,11 @@ package com.josefwiddifield.view;
 		}
 
 		public String getUserInput() {
-			return in.nextLine();
+			String input = in.nextLine();
+			return input;
 		}
 
-		public void showErrorMessage(String message) {
+		public void displayErrorMessage(String message) {
 			out.println("****** " + message + " ******");
 			out.flush();
 		}
