@@ -58,7 +58,11 @@ public class DriverTripSystemCLI {
 					menu.displayErrorMessage("Null Pointer Exception");
 				}
 			} else if(choice.equals(MAIN_MENU_OPTION_ADD_TRIP)) {
-				
+				menu.displayMessage("Input name of driver");
+				//match name to driver in file
+				//add start time
+				//add end time
+				//add miles driven
 			} else if(choice.equals(MAIN_MENU_OPTION_REMOVE_TRIP)) {
 				
 			} else if(choice.equals(MAIN_MENU_OPTION_GET_REPORT)) {
