@@ -10,3 +10,4 @@ Type this into your console and press enter
 once compiled type this and press enter
 ``java DriverTripSystemCLI.java``
 This should run the program.
+To see all the data saved from the run check the ``ReportFile.txt``
