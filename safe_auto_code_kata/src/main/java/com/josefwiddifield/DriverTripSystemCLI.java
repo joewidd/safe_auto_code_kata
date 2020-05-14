@@ -3,6 +3,7 @@ package com.josefwiddifield;
 import java.io.IOException;
 import java.util.regex.Pattern;
 
+
 import com.josefwiddifield.view.Menu;
 
 
@@ -77,21 +78,31 @@ public class DriverTripSystemCLI {
 				}
 				
 			} else if(choice.equals(MAIN_MENU_OPTION_REMOVE_TRIP)) {
+				menu.displayMessage("Enter trip ID to remove");
+				
+				try {
+					Long tripId = Long.parseLong(menu.getUserInput());
+					driverTripSystem.removeTripFromReport(tripId);
+				} catch(NullPointerException e) {
+					menu.displayErrorMessage("Null Pointer Exception");
+				}
 				
 			} else if(choice.equals(MAIN_MENU_OPTION_GET_REPORT)) {
-				menu.displayMessage("Driver Report");
+				menu.displayMessage("Enter name of driver you would like to see a report on");
+				
+				try {
+					String driverChoice = menu.getUserInput();
+					driverTripSystem.makeTripReport(driverChoice);
+					
+				} catch(NullPointerException e) {
+					menu.displayErrorMessage("Null Pointer Exception");
+				}
 				
 			} else {
 				break;
 			}
 		}
 	}
-	
-	
-	
-	
-	
-	
 	
 	public static void main(String[] args) {
 		Menu menu = new Menu(System.in, System.out);
