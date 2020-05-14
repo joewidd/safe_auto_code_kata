@@ -37,7 +37,7 @@ public class DriverTripSystemWriterReader {
 		}
 	}
 
-	public void removeLineFromFile(String file, String lineToRemove) {
+	public void removeDriverFromFile(String file, String lineToRemove) {
 
 		try {
 
@@ -86,7 +86,7 @@ public class DriverTripSystemWriterReader {
 		}
 	}
 
-	public void removeLineFromFileWithId(String file, Long id) {
+	public void removeTripFromFileWithId(String file, Long id) {
 		try {
 			File inFile = new File(file);
 
@@ -155,7 +155,7 @@ public class DriverTripSystemWriterReader {
 						long numberOfHours = Duration.between(start, end).toHours();
 						long mph = miles / numberOfHours;
 						
-						if(mph > 5 || mph < 100) {
+						if(mph > 5 && mph < 100) {
 							System.out.println("Driver Report");
 							System.out.println(trimmLine[2] + " drove " + miles + " miles" + " at an average of " + mph + " mph");
 						}
