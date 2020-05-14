@@ -15,5 +15,7 @@ public class DriverTripSystem {
 	public void removeDriverFromReport(String input) {
 		writer.removeLineFromFile("ReportFile.txt", input);
 	}
-	
+	public void addTripToReport(String input, int count) throws IOException {
+		writer.addTrip(input, count);
+	}
 }

@@ -22,9 +22,10 @@ public class DriverTripSystemWriterReader {
 		}
 	}
 	//TODO make this work
-	public void addTrip(String input) throws IOException {
+	public void addTrip(String input, int count) throws IOException {
+		
 		try (FileWriter fr = new FileWriter(file, true); BufferedWriter br = new BufferedWriter(fr))  {
-			br.write("Driver," + input + "\n");
+			br.write("Trip," + count +","+ input + "\n");
 		} catch (IOException e) {
 			throw new IOException(e);
 		}

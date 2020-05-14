@@ -26,6 +26,8 @@ public class DriverTripSystemCLI {
 	
 	private DriverTripSystem driverTripSystem = new DriverTripSystem();
 	
+	private int count = 0;
+	
 	
 	public DriverTripSystemCLI(Menu menu) {
 		this.menu = menu;
@@ -59,12 +61,20 @@ public class DriverTripSystemCLI {
 				}
 			} else if(choice.equals(MAIN_MENU_OPTION_ADD_TRIP)) {
 				menu.displayMessage("Input name of driver, start date, end date, and miles formatted as such: name,YYYY-MM-dd HH:mm,YYYY-MM-dd HH:mm,miles");
+				
+				try {
 				String tripDetails = menu.getUserInput();
 				while (!Pattern.matches("[A-Z,a-z]+,\\d{4}-[01]\\d-[0-3]\\d\\s[0-2]\\d((:[0-5]\\d)?){2},\\d{4}-[01]\\d-[0-3]\\d\\s[0-2]\\d((:[0-5]\\d)?){2},[0-9][A-Za-z0-9 -]*$", tripDetails)) {
 	            menu.displayMessage("invalid answer, try again");
 	            tripDetails = menu.getUserInput();
 				}
-				
+				count++;
+				driverTripSystem.addTripToReport(tripDetails,count);
+				} catch(NullPointerException e) {
+					menu.displayErrorMessage("Null Pointer Exception");
+				} catch (IOException e) {
+					menu.displayErrorMessage("IO Exception");
+				}
 				
 			} else if(choice.equals(MAIN_MENU_OPTION_REMOVE_TRIP)) {
 				
