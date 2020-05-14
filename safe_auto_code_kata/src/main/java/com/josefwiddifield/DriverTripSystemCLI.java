@@ -1,7 +1,7 @@
 package com.josefwiddifield;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 import com.josefwiddifield.view.Menu;
 
@@ -50,7 +50,7 @@ public class DriverTripSystemCLI {
 				}
 				
 			} else if (choice.equals(MAIN_MENU_OPTION_REMOVE_DRIVER)) {
-				menu.displayMessage("Type the name of the Driver you want to remove exactly");
+				menu.displayMessage("Type the name of the driver you want to remove exactly");
 				try {
 				String nameToRemove = "Driver," + menu.getUserInput();
 				driverTripSystem.removeDriverFromReport(nameToRemove);
@@ -58,14 +58,18 @@ public class DriverTripSystemCLI {
 					menu.displayErrorMessage("Null Pointer Exception");
 				}
 			} else if(choice.equals(MAIN_MENU_OPTION_ADD_TRIP)) {
-				menu.displayMessage("Input name of driver");
-				//match name to driver in file
-				//add start time
-				//add end time
-				//add miles driven
+				menu.displayMessage("Input name of driver, start date, end date, and miles formatted as such: name,YYYY-MM-dd HH:mm,YYYY-MM-dd HH:mm,miles");
+				String tripDetails = menu.getUserInput();
+				while (!Pattern.matches("[A-Z,a-z]+,\\d{4}-[01]\\d-[0-3]\\d\\s[0-2]\\d((:[0-5]\\d)?){2},\\d{4}-[01]\\d-[0-3]\\d\\s[0-2]\\d((:[0-5]\\d)?){2},[0-9][A-Za-z0-9 -]*$", tripDetails)) {
+	            menu.displayMessage("invalid answer, try again");
+	            tripDetails = menu.getUserInput();
+				}
+				
+				
 			} else if(choice.equals(MAIN_MENU_OPTION_REMOVE_TRIP)) {
 				
 			} else if(choice.equals(MAIN_MENU_OPTION_GET_REPORT)) {
+				menu.displayMessage("Driver Report");
 				
 			} else {
 				break;
